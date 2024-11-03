@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="28dp"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutTextInput"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_border_radius_16"
+        app:boxBackgroundMode="none"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="56dp"
+            android:alpha="0.4"
+            android:gravity="top"
+            android:hint="Enter your prompt ..."
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic_close"
+        app:layout_constraintEnd_toEndOf="@id/layoutTextInput"
+        app:layout_constraintTop_toTopOf="@id/layoutTextInput" />
+
+    <FrameLayout
+        android:id="@+id/frameContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_border_radius_16"
+        app:layout_constraintBottom_toTopOf="@id/tvStyle"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintTop_toBottomOf="@id/layoutTextInput">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_empty"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintTop_toTopOf="@id/frameContent"
+        app:layout_constraintStart_toStartOf="@id/frameContent"
+        app:layout_constraintEnd_toEndOf="@id/frameContent"
+        app:layout_constraintBottom_toTopOf="@id/tvEmpty" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add your photo"
+        app:layout_constraintStart_toStartOf="@id/ivEmpty"
+        app:layout_constraintEnd_toEndOf="@id/ivEmpty"
+        app:layout_constraintTop_toBottomOf="@id/ivEmpty"
+        app:layout_constraintBottom_toBottomOf="@id/frameContent" />
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/groupEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="tvEmpty, ivEmpty"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose your Style"
+        android:textColor="@color/primary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/rvStyle"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/btnGenerate"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_style_generate"
+        android:layout_marginBottom="48dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnGenerate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_button_border_radius_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Generate AI"
+        android:textAllCaps="false"
+        android:textColor="@color/white"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
